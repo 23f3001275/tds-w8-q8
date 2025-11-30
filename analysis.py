@@ -14,6 +14,7 @@ import json
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Ensure output folder
 os.makedirs("assets", exist_ok=True)
@@ -46,32 +47,40 @@ df.to_csv("mrr_quarters.csv", index=False)
 # -------------------------
 # Visualization (professional)
 # -------------------------
-plt.style.use("seaborn-whitegrid")
-fig, ax = plt.subplots(figsize=(5.12, 5.12))  # 5.12 in * 100dpi = 512 px
+import seaborn as sns
 
-# Plot bars for each quarter
-bars = ax.bar(df["Quarter"], df["MRR_Growth"], color=["#4C72B0", "#55A868", "#C44E52", "#8172B2"], width=0.6, edgecolor="black")
+sns.set_style("whitegrid")     # FIXED
+sns.set_context("talk")        # presentation-friendly text scaling
 
-# Plot the industry benchmark as a dashed line
-ax.axhline(industry_target, color="darkred", linestyle="--", linewidth=2, label=f"Industry Target: {industry_target}%")
+fig, ax = plt.subplots(figsize=(5.12, 5.12))  # EXACT 512×512 at dpi=100
 
-# Annotate bar values
+bars = ax.bar(df["Quarter"], df["MRR_Growth"],
+              color=["#4C72B0", "#55A868", "#C44E52", "#8172B2"],
+              width=0.6,
+              edgecolor="black")
+
+# Benchmark line
+ax.axhline(industry_target, color="darkred", linestyle="--", linewidth=2,
+           label=f"Industry Target: {industry_target}%")
+
+# Annotate bars
 for bar in bars:
     height = bar.get_height()
     ax.annotate(f"{height:.2f}%", xy=(bar.get_x() + bar.get_width()/2, height),
-                xytext=(0, 6), textcoords="offset points", ha='center', va='bottom', fontsize=10)
+                xytext=(0, 6), textcoords="offset points",
+                ha='center', va='bottom', fontsize=10)
 
-# Labels and title
 ax.set_ylim(0, max(industry_target + 5, df["MRR_Growth"].max() + 5))
-ax.set_title("MRR Growth by Quarter (2024) — vs Industry Target", fontsize=12, fontweight="bold", pad=12)
+ax.set_title("MRR Growth by Quarter (2024) — vs Industry Target",
+             fontsize=12, fontweight="bold", pad=12)
 ax.set_ylabel("MRR Growth (%)")
 ax.set_xlabel("Quarter")
 ax.legend(loc="upper right", fontsize=9)
 
-# Ensure layout fits and save EXACT 512x512 PNG
 plt.tight_layout()
-plt.savefig("assets/mrr_trend.png", dpi=100)  # 5.12in * 100dpi = 512px
+plt.savefig("assets/mrr_trend.png", dpi=100)  # EXACT 512×512
 plt.close(fig)
+
 
 # -------------------------
 # Generate textual summary (analysis_summary.txt) and also print to console

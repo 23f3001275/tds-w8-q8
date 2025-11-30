@@ -1,0 +1,25 @@
+MRR Quarterly Analysis (2024)
+Author: 23f3001275@ds.study.iitm.ac.in
+
+Quarterly MRR growth values: 6.44, 3.69, 5.96, 7.73
+Computed Average MRR Growth: 5.96
+Industry Target: 15.00
+
+Key findings:
+- The computed average MRR growth for 2024 is 5.96%, which is well below the industry benchmark of 15%.
+- Q2 is the lowest quarter at 3.69%. Q4 shows improvement but still far from target.
+
+Business implications:
+- Current growth trajectory is insufficient to meet industry targets; continued underperformance risks reduced valuation, lower investor confidence, and constrained ability to fund expansion.
+
+Recommendation (solution): expand into new market segments.
+- Suggested actions:
+  1) Conduct targeted GTM pilots for two high-potential segments (SMB Services, Mid-market FinTech).
+  2) Create segment-specific packaging and pricing within 3 months to reduce friction and increase adoption rates.
+  3) Invest in targeted marketing + sales enablement with ROI measurement (CPL, conversion) over next two quarters.
+  4) Run retention actions to increase existing customer expansion (upsell/cross-sell).
+
+Next steps:
+- Build experiments, run pilots, and track MRR uplift. Reassess in two quarters.
+
+LLM provenance: Analysis and code generation assisted by Jules (ChatGPT Codex). See PR for commit messages showing LLM usage.
